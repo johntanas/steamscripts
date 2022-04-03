@@ -4,9 +4,8 @@ from steampy.client import SteamClient, TradeOfferState
 from steampy.models import GameOptions
 import enum
 import time
-import account
-import re
 import math
+import parse_price as *
 name=input("name of account? ")
 module=__import__("account."+name,fromlist=(account))
 cred=module.module
@@ -14,11 +13,6 @@ path="./steamguard/"+name+".txt"
 class Currency(enum.IntEnum):
 	JPY = 8
 	SGD = 13
-def parse_price(price: str):
-    pattern = '\D?(\d*)(,*)?(\d+)(\.*)(\d*)'
-    tokens = re.search(pattern, price, re.UNICODE)
-    decimal_str = tokens.group(1)+tokens.group(3)+"."+tokens.group(5)
-    return float(decimal_str)
 def is_donation(offer: dict) -> bool:
 	return offer.get('items_to_receive') \
 		and not offer.get('items_to_give') \
