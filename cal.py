@@ -1,5 +1,5 @@
 #to calculate the proprotion of items to buy to minimise steam wallet unused
-import parse_price
+import parse_price as *
 import math
 x=input("balance?")
 if type(x) != int:
