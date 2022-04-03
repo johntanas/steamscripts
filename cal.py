@@ -1,12 +1,7 @@
 #to calculate the proprotion of items to buy to minimise steam wallet unused
-import re
+import parse_price
 import math
 x=input("balance?")
-def parse_price(price: str):
-    pattern = '\D?(\d*)(,*)?(\d+)(\.)(\d+)'
-    tokens = re.search(pattern, price, re.UNICODE)
-    decimal_str = tokens.group(1)+tokens.group(3)+"."+tokens.group(5)
-    return float(decimal_str)
 if type(x) != int:
 	x=parse_price(x)
 a=input("item 1 price?")
